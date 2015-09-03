@@ -108,6 +108,7 @@ def create_batch():
 	config.read('conf.ini')
 	all_prog = config.sections()
 	batch.write('@echo off\n')
+	batch.write('cd tools\n')
 	batch.write('IF "%PROCESSOR_ARCHITECTURE%"=="x86" (set bit=x86) else (set bit=x64)\n')
 	batch.write('@echo Setup programs %bit% \n')
 	batch.write('IF %bit% EQU x64 (\n')
@@ -116,7 +117,6 @@ def create_batch():
 	for prog in all_prog:
 		if config[prog]['OS'] == "64" or config[prog]['OS'] == "multi":
 			batch.write('	@echo Install '+prog+'\n')
-			batch.write('	cd tools\n')
 			batch.write("	\""+config[prog]['exe']+"\" "+config[prog]['mode']+"\n")
 	batch.write('	) ELSE (\n')
 	
@@ -124,7 +124,6 @@ def create_batch():
 	for prog in all_prog:
 		if config[prog]['OS'] == "32" or config[prog]['OS'] == "multi":
 			batch.write('	@echo Install '+prog+'\n')
-			batch.write('	cd tools\n')
 			batch.write("	\""+config[prog]['exe']+"\" "+config[prog]['mode']+"\n")
 	batch.write(')\n')	
 	batch.write('pause')
@@ -155,14 +154,13 @@ if __name__ == '__main__':
       
      if choice == "c":
        create_batch()
+       print("*********************   setup.bat has been create   **********************")
        
      
      if choice == "r":
       reset_file()
       print("The file has been reset")
-      
-            # probleme quand on add plusieurs programmes !!!!
-     
+       
     
     sys.exit(main(sys.argv))
      
