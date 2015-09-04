@@ -6,6 +6,6 @@ Détecte automatiquement 32 / 64 bits.
 
 Conf.ini
 ---------------
-Fichier de configuration qui contient la liste des logiciels et les pramètres à ajouter.
+Fichier de configuration qui contient la liste des logiciels et pramètres
 
 
