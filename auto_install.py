@@ -155,6 +155,7 @@ if __name__ == '__main__':
      if choice == "c":
        create_batch()
        print("*********************   setup.bat has been create   **********************")
+       print("*********************   copy setup.bat and tools folder ******************")
        
      
      if choice == "r":
